@@ -1,0 +1,54 @@
+﻿
+--主修配课
+
+
+insert into jw_xk_xsxkb
+                  --1    30    1
+  (jxb_id, xh_id, xklc, xkbj, sxbj, xnm, xqm, kch_id,  bz )
+
+select a.jxb_id,d.xh_id,'1','30','1',a.xnm,a.xqm,a.kch_id,'东语9-07' From jw_jxrw_jxbxxb a,jw_jxrw_jxbhbxxb b ,jw_jh_kcxzdmb c,jw_xjgl_xsxjxxb d where a.jxb_id=b.jxb_id and b.kcxzdm =c.kcxzdm/* and c.xbx='bx'*/ and a.xnm||a.xqm='20183' and b.bh_id=d.bh_id and not exists (select 1 from jw_xk_xsxkb where kch_id=a.kch_id and xh_id=d.xh_id and xnm||xqm='20183')/* and  a .kch_id in (select kch_id from jw_jh_kcdmb where regexp_like(kcmc,'^毕业实习+'))*/  and b.zyfx_id=d.zyfx_id and a.sfxkbj='0'  and d.sfzx='1' and d.xnm||d.xqm='20183' and a.kklxdm='01'
+/*and d.njdm_id='2015'*/ and jg_id=(select jg_id from zftal_xtgl_jgdmb where jgmc='东方语言学院')
+
+
+
+
+
+insert into jw_xk_xsxkb
+                  --1    30    1
+  (jxb_id, xh_id, xklc, xkbj, sxbj, xnm, xqm, kch_id,  bz )
+
+select a.jxb_id,d.xh_id,'1','30','1',a.xnm,a.xqm,a.kch_id,'东语9-07' From jw_jxrw_jxbxxb a,jw_jxrw_jxbhbxxb b ,jw_jh_kcxzdmb c,jw_xjgl_xsxjxxb d where a.jxb_id=b.jxb_id and b.kcxzdm =c.kcxzdm/* and c.xbx='bx'*/ and a.xnm||a.xqm='20183' and b.bh_id=d.bh_id and not exists (select 1 from jw_xk_xsxkb where kch_id=a.kch_id and xh_id=d.xh_id and xnm||xqm='20183')/* and  a .kch_id in (select kch_id from jw_jh_kcdmb where regexp_like(kcmc,'^毕业实习+'))*/  and b.zyfx_id='wfx' and a.sfxkbj='0'  and d.sfzx='1' and d.xnm||d.xqm='20183' and a.kklxdm='01'
+/*and d.njdm_id='2018'*/ and jg_id=(select jg_id from zftal_xtgl_jgdmb where jgmc='东方语言学院')
+
+
+
+
+select * From jw_jxrw_jxbxxb where kch_id='01C1001b' and xnm||xqm='20183' for update
+
+
+
+delete from jw_xk_xsxkb where xnm||xqm='20183' and bz='英语9-07'
+
+
+select * From jw_xk_xsyxb where xh_id='0515151231' and kch_id='05G1020a' and xnm||xqm='20183' for update;
+
+--预选配课
+insert into jw_xk_xsxkb
+                  --1    30    1
+  (jxb_id, xh_id, xklc, xkbj, sxbj, xnm, xqm, kch_id,  bz )
+
+select /*count(*),*/ a.jxb_id,b.xh_id,'1','30','1',b.xnm,b.xqm,b.kch_id,'选修9-07' From  jw_jxrw_jxbhbxxb a,jw_xk_xsyxb b,jw_xjgl_xsxjxxb c
+
+  ,jw_jxrw_jxbxxb d where b.xnm||b.xqm='20183' and c.xnm||c.xqm='20183' and d.xnm||d.xqm='20183' and   c.bh_id=a.bh_id and b.xh_id=c.xh_id and c.sfzx='1'  and d.kch_id=b.kch_id and a.jxb_id=d.jxb_id and d.kklxdm='01'  and not exists (select 1 from jw_xk_xsxkb where kch_id=b.kch_id and xh_id=b.xh_id and xnm||xqm='20183' and jxb_id=a.jxb_id)/* group by a.jxb_id,b.xh_id,'1','30','1',b.xnm,b.xqm,b.kch_id*/
+
+
+
+
+
+
+
+
+
+
+
+
